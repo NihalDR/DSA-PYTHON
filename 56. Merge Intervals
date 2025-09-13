@@ -1,0 +1,16 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda intervals:intervals[0]) #O(nlogn)
+        l=[]
+        index=0
+        for i in range(len(intervals)): #O(n)
+            if i==0:
+                l.append(intervals[i])
+                index=index+1
+            elif (intervals[i][0]<=l[index-1][1] and intervals[i][1]>=l[index-1][1]) or (intervals[i][1]>=l[index-1][0] and intervals[i][1]<=l[index-1][1]):
+                    l[index-1][1]=max(l[index-1][1],intervals[i][1]) #O(1)
+            else:
+                l.append(intervals[i])
+                index=index+1
+        return l
+        #time and space:O(nlogn+n),O(n)

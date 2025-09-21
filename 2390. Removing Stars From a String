@@ -1,0 +1,9 @@
+class Solution:
+    def removeStars(self, s: str) -> str:
+        nihal=[]
+        for i in s:
+            if i=='*':
+                nihal.pop()
+            else:
+                nihal+=[i]
+        return "".join(nihal)     
